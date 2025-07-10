@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hero Image Placeholder</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .device-frame {
+            width: 300px;
+            height: 600px;
+            background: #1C1C1E;
+            border-radius: 40px;
+            padding: 10px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #F2F2F7;
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .status-bar {
+            height: 40px;
+            background: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 12px;
+        }
+        .app-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #FFFFFF;
+        }
+        .app-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 20px 0;
+            background: linear-gradient(135deg, #007AFF, #5856D6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .calendar-grid {
+            width: 100%;
+            max-width: 250px;
+            margin: 20px 0;
+        }
+        .week-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        .week-day {
+            text-align: center;
+            font-size: 10px;
+            color: #8E8E93;
+        }
+        .calendar-dates {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .date {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 12px;
+            position: relative;
+        }
+        .date.today {
+            background: #007AFF;
+            color: white;
+        }
+        .date.has-event::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            width: 4px;
+            height: 4px;
+            background: #34C759;
+            border-radius: 50%;
+        }
+        .task-list {
+            width: 100%;
+            margin-top: 20px;
+        }
+        .task-item {
+            background: #F2F2F7;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .task-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .task-text {
+            font-size: 12px;
+            flex: 1;
+        }
+        .instructions {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="device-frame">
+        <div class="screen">
+            <div class="status-bar">
+                <span>9:41</span>
+                <span>📶 🔋</span>
+            </div>
+            <div class="app-content">
+                <div class="app-title">AI日历</div>
+                <div class="calendar-grid">
+                    <div class="week-days">
+                        <div class="week-day">日</div>
+                        <div class="week-day">一</div>
+                        <div class="week-day">二</div>
+                        <div class="week-day">三</div>
+                        <div class="week-day">四</div>
+                        <div class="week-day">五</div>
+                        <div class="week-day">六</div>
+                    </div>
+                    <div class="calendar-dates">
+                        <div class="date">1</div>
+                        <div class="date">2</div>
+                        <div class="date has-event">3</div>
+                        <div class="date">4</div>
+                        <div class="date">5</div>
+                        <div class="date has-event">6</div>
+                        <div class="date">7</div>
+                        <div class="date">8</div>
+                        <div class="date has-event">9</div>
+                        <div class="date">10</div>
+                        <div class="date">11</div>
+                        <div class="date today">12</div>
+                        <div class="date">13</div>
+                        <div class="date">14</div>
+                        <div class="date has-event">15</div>
+                        <div class="date">16</div>
+                        <div class="date">17</div>
+                        <div class="date has-event">18</div>
+                        <div class="date">19</div>
+                        <div class="date">20</div>
+                        <div class="date">21</div>
+                    </div>
+                </div>
+                <div class="task-list">
+                    <div class="task-item">
+                        <div class="task-dot" style="background: #007AFF;"></div>
+                        <div class="task-text">完成项目报告</div>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-dot" style="background: #34C759;"></div>
+                        <div class="task-text">团队会议 14:00</div>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-dot" style="background: #FF9500;"></div>
+                        <div class="task-text">健身计划</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="instructions">
+            请截图此设备画面作为 hero-mockup.png
+        </div>
+    </div>
+</body>
+</html>

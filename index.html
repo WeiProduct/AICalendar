@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI日历 - 智能时间管理助手</title>
+    <meta name="description" content="AI日历是一款智能的iOS时间管理应用，通过AI自动排程帮助您高效管理每一天。支持灵活任务调度、专注计时器、多视图日历等功能。">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo">📅</span>
+                <span class="brand-name">AI日历</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#features" class="nav-link">功能特点</a>
+                <a href="#screenshots" class="nav-link">应用截图</a>
+                <a href="#download" class="nav-link">下载</a>
+                <button class="lang-switch" onclick="toggleLanguage()">EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">让AI帮您规划每一天</h1>
+                <p class="hero-subtitle">智能排程、灵活调度、专注管理，让时间管理变得简单高效</p>
+                <div class="hero-buttons">
+                    <a href="https://apps.apple.com/us/app/ai%E6%97%A5%E5%8E%86/id6748324487" class="btn btn-primary">
+                        <svg class="apple-icon" viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        App Store下载
+                    </a>
+                    <a href="#features" class="btn btn-secondary">了解更多</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/hero-mockup.png" alt="AI日历应用截图" class="hero-mockup">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">核心功能</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI智能排程</h3>
+                    <p>根据任务优先级和截止时间，自动安排最优时间段，避免冲突，提高效率</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>灵活任务管理</h3>
+                    <p>区分固定事件和灵活任务，支持任务分片，让长任务也能见缝插针</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>专注计时器</h3>
+                    <p>内置番茄钟，关联具体任务，追踪专注时长，提升工作效率</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>数据统计</h3>
+                    <p>详细的时间使用报告，了解您的时间去向，持续优化时间管理</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>中英双语</h3>
+                    <p>完美支持中文和英文界面，满足不同用户的使用习惯</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>隐私优先</h3>
+                    <p>所有数据本地存储，无需网络连接，您的日程信息绝对安全</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="screenshots">
+        <div class="container">
+            <h2 class="section-title">应用截图</h2>
+            <div class="screenshots-slider">
+                <div class="screenshot-item">
+                    <img src="assets/screenshot-1.png" alt="日历视图">
+                    <p>直观的日历视图</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/screenshot-2.png" alt="任务管理">
+                    <p>智能任务管理</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/screenshot-3.png" alt="专注计时">
+                    <p>专注计时器</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/screenshot-4.png" alt="数据统计">
+                    <p>详细统计分析</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-content">
+                <h2>立即下载AI日历</h2>
+                <p>开始您的高效时间管理之旅</p>
+                <div class="download-buttons">
+                    <a href="https://apps.apple.com/us/app/ai%E6%97%A5%E5%8E%86/id6748324487" class="app-store-badge">
+                        <img src="assets/app-store-badge-cn.svg" alt="Download on App Store">
+                    </a>
+                </div>
+                <p class="download-note">需要 iOS 17.0 或更高版本</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 AI日历. All rights reserved.</p>
+                <p>Made with ❤️ by Weiji Zhang</p>
+                <p>Contact: <a href="mailto:1597498880weiproduct@gmail.com" style="color: white; text-decoration: underline;">1597498880weiproduct@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
