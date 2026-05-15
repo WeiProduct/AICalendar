@@ -31,8 +31,8 @@ const translations = {
         downloadTitle: '立即下载AI日历',
         downloadSubtitle: '开始您的高效时间管理之旅',
         downloadNote: '需要 iOS 17.0 或更高版本',
-        footerRights: '&copy; 2024 AI日历. All rights reserved.',
-        footerMadeBy: 'Made with ❤️ by Weiji Zhang'
+        footerRights: 'AI日历. All rights reserved.',
+        footerMadeBy: 'Built by WeiProduct'
     },
     'en': {
         navFeatures: 'Features',
@@ -63,8 +63,8 @@ const translations = {
         downloadTitle: 'Download AI Calendar Now',
         downloadSubtitle: 'Start your journey to efficient time management',
         downloadNote: 'Requires iOS 17.0 or later',
-        footerRights: '&copy; 2024 AI Calendar. All rights reserved.',
-        footerMadeBy: 'Made with ❤️ by Weiji Zhang'
+        footerRights: 'AI Calendar. All rights reserved.',
+        footerMadeBy: 'Built by WeiProduct'
     }
 };
 
@@ -75,61 +75,87 @@ function toggleLanguage() {
 
 function updateLanguage() {
     const trans = translations[currentLang];
-    
-    // Update navigation
-    document.querySelectorAll('.nav-link')[0].textContent = trans.navFeatures;
-    document.querySelectorAll('.nav-link')[1].textContent = trans.navScreenshots;
-    document.querySelectorAll('.nav-link')[2].textContent = trans.navDownload;
-    document.querySelector('.lang-switch').textContent = currentLang === 'zh-CN' ? 'EN' : '中文';
-    
-    // Update hero section
-    document.querySelector('.hero-title').textContent = trans.heroTitle;
-    document.querySelector('.hero-subtitle').textContent = trans.heroSubtitle;
-    document.querySelector('.btn-primary').innerHTML = `
-        <svg class="apple-icon" viewBox="0 0 24 24" width="20" height="20">
-            <path fill="currentColor" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-        </svg>
-        ${trans.downloadBtn}
-    `;
-    document.querySelector('.btn-secondary').textContent = trans.learnMore;
-    
-    // Update features section
-    document.querySelectorAll('.section-title')[0].textContent = trans.featuresTitle;
+    const navLinks = document.querySelectorAll('.nav-link');
+    const langSwitch = document.querySelector('.lang-switch');
+    const heroTitle = document.querySelector('.hero-title');
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    const primaryButton = document.querySelector('.btn-primary');
+    const secondaryButton = document.querySelector('.btn-secondary');
+    const sectionTitles = document.querySelectorAll('.section-title');
     const featureCards = document.querySelectorAll('.feature-card');
-    featureCards[0].querySelector('h3').textContent = trans.feature1Title;
-    featureCards[0].querySelector('p').textContent = trans.feature1Desc;
-    featureCards[1].querySelector('h3').textContent = trans.feature2Title;
-    featureCards[1].querySelector('p').textContent = trans.feature2Desc;
-    featureCards[2].querySelector('h3').textContent = trans.feature3Title;
-    featureCards[2].querySelector('p').textContent = trans.feature3Desc;
-    featureCards[3].querySelector('h3').textContent = trans.feature4Title;
-    featureCards[3].querySelector('p').textContent = trans.feature4Desc;
-    featureCards[4].querySelector('h3').textContent = trans.feature5Title;
-    featureCards[4].querySelector('p').textContent = trans.feature5Desc;
-    featureCards[5].querySelector('h3').textContent = trans.feature6Title;
-    featureCards[5].querySelector('p').textContent = trans.feature6Desc;
-    
-    // Update screenshots section
-    document.querySelectorAll('.section-title')[1].textContent = trans.screenshotsTitle;
     const screenshots = document.querySelectorAll('.screenshot-item p');
-    screenshots[0].textContent = trans.screenshot1;
-    screenshots[1].textContent = trans.screenshot2;
-    screenshots[2].textContent = trans.screenshot3;
-    screenshots[3].textContent = trans.screenshot4;
-    
-    // Update download section
-    document.querySelector('.download-content h2').textContent = trans.downloadTitle;
-    document.querySelector('.download-content p').textContent = trans.downloadSubtitle;
-    document.querySelector('.download-note').textContent = trans.downloadNote;
-    
-    // Update footer
+    const downloadTitle = document.querySelector('.download-content h2');
+    const downloadSubtitle = document.querySelector('.download-content p');
+    const downloadNote = document.querySelector('.download-note');
     const footerP = document.querySelectorAll('.footer-content p');
-    footerP[0].innerHTML = trans.footerRights;
-    footerP[1].innerHTML = trans.footerMadeBy;
+    const currentYear = document.getElementById('currentYear');
+    
+    if (navLinks.length >= 3) {
+        navLinks[0].textContent = trans.navFeatures;
+        navLinks[1].textContent = trans.navScreenshots;
+        navLinks[2].textContent = trans.navDownload;
+    }
+
+    if (langSwitch) {
+        langSwitch.textContent = currentLang === 'zh-CN' ? 'EN' : '中文';
+    }
+    
+    if (heroTitle) heroTitle.textContent = trans.heroTitle;
+    if (heroSubtitle) heroSubtitle.textContent = trans.heroSubtitle;
+    if (primaryButton) {
+        const label = primaryButton.querySelector('.download-label');
+        if (label) label.textContent = trans.downloadBtn;
+    }
+    if (secondaryButton) secondaryButton.textContent = trans.learnMore;
+    
+    if (sectionTitles[0]) sectionTitles[0].textContent = trans.featuresTitle;
+    [
+        ['feature1Title', 'feature1Desc'],
+        ['feature2Title', 'feature2Desc'],
+        ['feature3Title', 'feature3Desc'],
+        ['feature4Title', 'feature4Desc'],
+        ['feature5Title', 'feature5Desc'],
+        ['feature6Title', 'feature6Desc']
+    ].forEach(([titleKey, descKey], index) => {
+        const card = featureCards[index];
+        if (!card) return;
+        const title = card.querySelector('h3');
+        const description = card.querySelector('p');
+        if (title) title.textContent = trans[titleKey];
+        if (description) description.textContent = trans[descKey];
+    });
+    
+    if (sectionTitles[1]) sectionTitles[1].textContent = trans.screenshotsTitle;
+    ['screenshot1', 'screenshot2', 'screenshot3', 'screenshot4'].forEach((key, index) => {
+        if (screenshots[index]) {
+            screenshots[index].textContent = trans[key];
+        }
+    });
+    
+    if (downloadTitle) downloadTitle.textContent = trans.downloadTitle;
+    if (downloadSubtitle) downloadSubtitle.textContent = trans.downloadSubtitle;
+    if (downloadNote) downloadNote.textContent = trans.downloadNote;
+    
+    if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+    }
+
+    if (footerP[0]) {
+        footerP[0].textContent = `© ${new Date().getFullYear()} ${trans.footerRights}`;
+    }
+    if (footerP[1]) footerP[1].textContent = trans.footerMadeBy;
     
     // Update HTML lang attribute
     document.documentElement.lang = currentLang;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const langSwitch = document.getElementById('langSwitch');
+    if (langSwitch) {
+        langSwitch.addEventListener('click', toggleLanguage);
+    }
+    updateLanguage();
+});
 
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -161,22 +187,23 @@ const observerOptions = {
     rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
+if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
 
-// Observe feature cards
-document.addEventListener('DOMContentLoaded', function() {
-    const featureCards = document.querySelectorAll('.feature-card');
-    featureCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
-        observer.observe(card);
+    document.addEventListener('DOMContentLoaded', function() {
+        const featureCards = document.querySelectorAll('.feature-card');
+        featureCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
+            observer.observe(card);
+        });
     });
-});
+}
