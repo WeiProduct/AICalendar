@@ -119,15 +119,15 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 
 /* Hero device widget */
 .hero-visual { position: relative; display: flex; justify-content: center; }
-.device { position: relative; width: 300px; max-width: 78vw; background: var(--card); border: 1px solid var(--border-color); border-radius: 40px; padding: 16px 14px 18px; box-shadow: var(--shadow-lg); }
+.device { position: relative; width: 300px; max-width: 78vw; aspect-ratio: 9 / 19.5; display: flex; flex-direction: column; overflow: hidden; background: var(--card); border: 1px solid var(--border-color); border-radius: 40px; padding: 16px 14px 18px; box-shadow: var(--shadow-lg); }
 .device-notch { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 90px; height: 22px; background: var(--text-primary); opacity: .9; border-radius: 999px; }
 :root[data-theme="dark"] .device-notch { background: #000; opacity: 1; }
-.sched { margin-top: 30px; }
+.sched { margin-top: 30px; flex: 1; min-height: 0; display: flex; flex-direction: column; }
 .sched-head { display: flex; align-items: center; justify-content: space-between; padding: 4px 8px 14px; }
 .sched-title { font-weight: 800; font-size: 20px; }
 .sched-ai { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--success-color); }
 .sched-ai .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success-color); box-shadow: 0 0 0 0 rgba(52,199,89,.5); animation: pulse 2s infinite; }
-.sched-grid { display: flex; flex-direction: column; gap: 9px; }
+.sched-grid { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 9px; }
 .slot { display: grid; grid-template-columns: 42px 1fr; align-items: center; gap: 8px; }
 .slot-time { font-size: 11px; color: var(--text-secondary); font-weight: 600; text-align: right; }
 .lane { border-left: 2px dashed var(--border-color); padding-left: 10px; min-height: 34px; display: flex; align-items: center; }
