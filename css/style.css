@@ -273,9 +273,8 @@ button:focus-visible {
 
 .screenshot-item img {
     width: 100%;
-    aspect-ratio: 1290 / 2796;
-    object-fit: cover;
-    object-position: top;
+    height: auto;
+    display: block;
     border-radius: 20px;
     box-shadow: var(--shadow);
     margin-bottom: 15px;
