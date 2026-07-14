@@ -1,22 +1,29 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#007AFF">
+    <meta name="theme-color" content="#007AFF" id="themeColorMeta">
     <meta name="robots" content="index, follow">
-    <title>AI日历 - 智能时间管理助手</title>
-    <meta name="description" content="AI日历是一款智能的iOS时间管理应用，通过AI自动排程帮助您高效管理每一天。支持灵活任务调度、专注计时器、多视图日历等功能。">
+    <title>AI日历 - 智能时间管理助手 | AI Calendar</title>
+    <meta name="description" content="AI日历是一款智能的 iOS 时间管理应用，通过 AI 自动排程帮助您高效管理每一天。支持灵活任务调度、专注计时器、多视图日历，数据全本地存储。">
     <meta property="og:title" content="AI日历 | AI Calendar">
-    <meta property="og:description" content="AI日历是一款智能 iOS 时间管理应用，支持 AI 自动排程、灵活任务、专注计时器和时间统计。">
+    <meta property="og:description" content="让 AI 帮您规划每一天——智能排程、灵活任务、专注计时器，数据全本地存储。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://weiproduct.github.io/AICalendar/">
     <meta property="og:image" content="https://weiproduct.github.io/AICalendar/assets/hero-mockup.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI日历 | AI Calendar">
-    <meta name="twitter:description" content="Smart scheduling, flexible tasks, focus timer, and calendar views for iOS.">
+    <meta name="twitter:description" content="Smart AI scheduling, flexible tasks, focus timer, and calendar views for iOS. Private by design.">
     <meta name="twitter:image" content="https://weiproduct.github.io/AICalendar/assets/hero-mockup.png">
     <link rel="canonical" href="https://weiproduct.github.io/AICalendar/">
+    <link rel="alternate" hreflang="zh-CN" href="https://weiproduct.github.io/AICalendar/">
+    <link rel="alternate" hreflang="en" href="https://weiproduct.github.io/AICalendar/">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23007AFF'/%3E%3Cstop offset='1' stop-color='%235856D6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23g)'/%3E%3Crect x='24' y='28' width='52' height='48' rx='9' fill='none' stroke='white' stroke-width='5'/%3E%3Cpath d='M24 42 H76 M38 22 V32 M62 22 V32' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='58' r='6' fill='white'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23007AFF'/%3E%3Cstop offset='1' stop-color='%235856D6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23g)'/%3E%3Crect x='24' y='28' width='52' height='48' rx='9' fill='none' stroke='white' stroke-width='5'/%3E%3Cpath d='M24 42 H76 M38 22 V32 M62 22 V32' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script type="application/ld+json">
     {
@@ -25,148 +32,272 @@
       "name": "AI日历",
       "alternateName": "AI Calendar",
       "applicationCategory": "ProductivityApplication",
-      "operatingSystem": "iOS",
+      "operatingSystem": "iOS 17.0+",
       "url": "https://weiproduct.github.io/AICalendar/",
       "image": "https://weiproduct.github.io/AICalendar/assets/hero-mockup.png",
       "downloadUrl": "https://apps.apple.com/app/id6748324487",
-      "publisher": {
-        "@type": "Organization",
-        "name": "WeiProduct",
-        "url": "https://weiproduct.com/"
-      },
-      "description": "AI日历是一款智能的 iOS 时间管理应用，支持 AI 自动排程、灵活任务、专注计时器和时间统计。"
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "WeiProduct", "url": "https://weiproduct.com/" },
+      "description": "AI日历是一款智能的 iOS 时间管理应用，支持 AI 自动排程、灵活任务、专注计时器和时间统计，数据全本地存储。"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "AI 排程需要联网吗？", "acceptedAnswer": { "@type": "Answer", "text": "不需要。AI 排程逻辑在设备本地运行，全程离线可用，您的日程数据不会离开手机。" } },
+        { "@type": "Question", "name": "数据会同步到云端吗？", "acceptedAnswer": { "@type": "Answer", "text": "所有数据都保存在您的设备本地，我们不上传、不收集、不追踪任何日程信息。" } },
+        { "@type": "Question", "name": "固定事件和灵活任务有什么区别？", "acceptedAnswer": { "@type": "Answer", "text": "固定事件有明确时间（如会议）；灵活任务只需时长和截止日期，AI 会把它们自动排入空档。" } },
+        { "@type": "Question", "name": "任务分片是怎么工作的？", "acceptedAnswer": { "@type": "Answer", "text": "较长的任务可被拆成多个片段，AI 见缝插针地分配到多个空闲时段，让长任务也能推进。" } },
+        { "@type": "Question", "name": "支持哪些语言和系统版本？", "acceptedAnswer": { "@type": "Answer", "text": "支持简体中文与英文双语，需要 iOS 17.0 或更高版本。" } }
+      ]
     }
     </script>
 </head>
 <body>
-    
-    <nav class="navbar">
+    <a class="skip-link" href="#main" data-i18n="skip">跳到主要内容</a>
+
+    <nav class="navbar" id="navbar">
         <div class="container">
-            <div class="nav-brand">
-                <span class="logo">📅</span>
+            <a class="nav-brand" href="#" aria-label="AI日历">
+                <span class="brand-icon" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" width="34" height="34"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#007AFF"/><stop offset="1" stop-color="#5856D6"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#bg)"/><rect x="24" y="28" width="52" height="48" rx="9" fill="none" stroke="#fff" stroke-width="5"/><path d="M24 42 H76 M38 22 V32 M62 22 V32" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="58" r="6" fill="#fff"/></svg>
+                </span>
                 <span class="brand-name">AI日历</span>
-            </div>
+            </a>
             <div class="nav-menu">
-                <a href="#features" class="nav-link">功能特点</a>
-                <a href="#screenshots" class="nav-link">应用截图</a>
-                <a href="https://apps.apple.com/app/id6748324487" class="nav-link" target="_blank" rel="noopener noreferrer">下载</a>
-                    <button class="lang-switch" type="button" id="langSwitch" aria-label="Switch language">EN</button>
+                <a href="#how" class="nav-link" data-i18n="navHow">使用流程</a>
+                <a href="#features" class="nav-link" data-i18n="navFeatures">功能特点</a>
+                <a href="#screenshots" class="nav-link" data-i18n="navScreenshots">应用截图</a>
+                <a href="#faq" class="nav-link" data-i18n="navFaq">常见问题</a>
+                <button class="icon-btn" type="button" id="themeToggle" aria-label="切换深色模式">
+                    <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+                    <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+                </button>
+                <button class="lang-switch" type="button" id="langSwitch" aria-label="Switch language">EN</button>
+                <a href="https://apps.apple.com/app/id6748324487" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener noreferrer" data-i18n="navGet">获取 App</a>
             </div>
         </div>
     </nav>
 
-    
+    <main id="main">
     <section class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">让AI帮您规划每一天</h1>
-                <p class="hero-subtitle">智能排程、灵活调度、专注管理，让时间管理变得简单高效</p>
+                <span class="eyebrow" data-i18n="heroEyebrow">✦ AI 驱动的时间管理</span>
+                <h1 class="hero-title" data-i18n="heroTitle">让 AI 帮您规划每一天</h1>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">智能排程、灵活调度、专注管理，让时间管理变得简单高效。</p>
                 <div class="hero-buttons">
                     <a href="https://apps.apple.com/app/id6748324487" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                        <svg class="apple-icon" viewBox="0 0 24 24" width="20" height="20">
-                            <path fill="currentColor" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                        </svg>
-                        <span class="download-label">App Store下载</span>
+                        <svg class="apple-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        <span class="download-label" data-i18n="downloadBtn">App Store 下载</span>
                     </a>
-                    <a href="#features" class="btn btn-secondary">了解更多</a>
+                    <a href="#how" class="btn btn-secondary" data-i18n="learnMore">了解更多</a>
                 </div>
+                <ul class="hero-trust">
+                    <li data-i18n="trust1">🔒 数据全本地</li>
+                    <li data-i18n="trust2">📶 离线可用</li>
+                    <li data-i18n="trust3">🌏 中英双语</li>
+                </ul>
             </div>
-            <div class="hero-image">
-                <img src="assets/hero-mockup.png" alt="AI日历应用截图" class="hero-mockup" width="1290" height="2796" fetchpriority="high" decoding="async">
+            <div class="hero-visual">
+                <div class="device" role="img" aria-label="AI 自动把任务排入一天的空档">
+                    <div class="device-notch" aria-hidden="true"></div>
+                    <div class="sched">
+                        <div class="sched-head">
+                            <span class="sched-title" data-i18n="schedToday">今天</span>
+                            <span class="sched-ai"><span class="dot"></span><span data-i18n="schedAi">AI 已优化</span></span>
+                        </div>
+                        <div class="sched-grid">
+                            <div class="slot"><span class="slot-time">9:00</span><div class="lane"><div class="ev ev-task t1" data-i18n="ev1">写周报 · 90min</div></div></div>
+                            <div class="slot"><span class="slot-time">10:30</span><div class="lane"><div class="ev ev-fixed" data-i18n="evFixed">团队会议</div></div></div>
+                            <div class="slot"><span class="slot-time">11:30</span><div class="lane"><div class="ev ev-task t2" data-i18n="ev2">健身 · 45min</div></div></div>
+                            <div class="slot"><span class="slot-time">14:00</span><div class="lane"><div class="ev ev-task t3" data-i18n="ev3">读英语 · 30min</div></div></div>
+                            <div class="slot"><span class="slot-time">16:00</span><div class="lane"><div class="ev ev-task t4" data-i18n="ev4">整理素材 · 60min</div></div></div>
+                        </div>
+                        <div class="sched-foot"><span data-i18n="schedFoot">冲突已避开 · 3 个空档已填满</span></div>
+                    </div>
+                </div>
+                <div class="hero-chip chip-a" data-i18n="chipA">⏱️ 专注 2h 10m</div>
+                <div class="hero-chip chip-b" data-i18n="chipB">✅ 今日 6/7</div>
             </div>
         </div>
     </section>
 
-    
+    <section class="proof" aria-label="trust">
+        <div class="container proof-row">
+            <div class="proof-rating">
+                <div class="stars" aria-hidden="true">★★★★★</div>
+                <div class="proof-sub"><strong>App Store</strong><span data-i18n="proofRating">时间管理 · 效率工具</span></div>
+            </div>
+            <div class="proof-stats">
+                <div class="stat"><strong>iOS 17+</strong><span data-i18n="stat1">原生体验</span></div>
+                <div class="stat"><strong>100%</strong><span data-i18n="stat2">本地存储</span></div>
+                <div class="stat"><strong>EN / 中文</strong><span data-i18n="stat3">双语界面</span></div>
+                <div class="stat"><strong>0</strong><span data-i18n="stat4">广告 · 追踪</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how" class="how">
+        <div class="container">
+            <h2 class="section-title" data-i18n="howTitle">三步开启高效的一天</h2>
+            <p class="section-sub" data-i18n="howSub">告诉它要做什么，剩下的交给 AI。</p>
+            <div class="steps">
+                <div class="step reveal">
+                    <div class="step-badge">1</div>
+                    <div class="step-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></div>
+                    <h3 data-i18n="step1Title">添加任务与截止</h3>
+                    <p data-i18n="step1Desc">录入固定事件，或只填任务时长和 deadline，无需自己排时间。</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-badge">2</div>
+                    <div class="step-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.1 4.4 4.9.6-3.6 3.3 1 4.8L12 15.9 7.6 16.4l1-4.8L5 8.3l4.9-.6z"/></svg></div>
+                    <h3 data-i18n="step2Title">AI 自动排入最优时段</h3>
+                    <p data-i18n="step2Desc">按优先级和空档智能排程，自动避开冲突，长任务见缝插针。</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-badge">3</div>
+                    <div class="step-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5m5 14V9m5 10V4m5 15v-7"/></svg></div>
+                    <h3 data-i18n="step3Title">专注计时并每周复盘</h3>
+                    <p data-i18n="step3Desc">用内置番茄钟专注，自动记录时长，每周生成时间去向报告。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="features" class="features">
         <div class="container">
-            <h2 class="section-title">核心功能</h2>
+            <h2 class="section-title" data-i18n="featuresTitle">核心功能</h2>
+            <p class="section-sub" data-i18n="featuresSub">为专注和掌控感而设计的每一个细节。</p>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI智能排程</h3>
-                    <p>根据任务优先级和截止时间，自动安排最优时间段，避免冲突，提高效率</p>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/><path d="M12 12.5l1 2 2 .3-1.4 1.4.3 2-1.9-1-1.9 1 .3-2L9 14.8l2-.3z"/></svg></div>
+                    <h3 data-i18n="feature1Title">AI 智能排程</h3>
+                    <p data-i18n="feature1Desc">根据任务优先级和截止时间，自动安排最优时间段，避免冲突，提高效率。</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📋</div>
-                    <h3>灵活任务管理</h3>
-                    <p>区分固定事件和灵活任务，支持任务分片，让长任务也能见缝插针</p>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h12M8 12h12M8 18h12"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></div>
+                    <h3 data-i18n="feature2Title">灵活任务管理</h3>
+                    <p data-i18n="feature2Desc">区分固定事件和灵活任务，支持任务分片，让长任务也能见缝插针。</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⏱️</div>
-                    <h3>专注计时器</h3>
-                    <p>内置番茄钟，关联具体任务，追踪专注时长，提升工作效率</p>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></div>
+                    <h3 data-i18n="feature3Title">专注计时器</h3>
+                    <p data-i18n="feature3Desc">内置番茄钟，关联具体任务，追踪专注时长，提升工作效率。</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>数据统计</h3>
-                    <p>详细的时间使用报告，了解您的时间去向，持续优化时间管理</p>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4"/><path d="M4 20h16"/><rect x="7" y="12" width="3" height="5"/><rect x="12" y="8" width="3" height="9"/><rect x="17" y="5" width="3" height="12"/></svg></div>
+                    <h3 data-i18n="feature4Title">数据统计</h3>
+                    <p data-i18n="feature4Desc">详细的时间使用报告，了解您的时间去向，持续优化时间管理。</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3>中英双语</h3>
-                    <p>完美支持中文和英文界面，满足不同用户的使用习惯</p>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z"/></svg></div>
+                    <h3 data-i18n="feature5Title">中英双语</h3>
+                    <p data-i18n="feature5Desc">完美支持中文和英文界面，满足不同用户的使用习惯。</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>隐私优先</h3>
-                    <p>所有数据本地存储，无需网络连接，您的日程信息绝对安全</p>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l7 3v5c0 4.4-3 8.3-7 9.5-4-1.2-7-5.1-7-9.5v-5z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                    <h3 data-i18n="feature6Title">隐私优先</h3>
+                    <p data-i18n="feature6Desc">所有数据本地存储，无需网络连接，您的日程信息绝对安全。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    
     <section id="screenshots" class="screenshots">
         <div class="container">
-            <h2 class="section-title">应用截图</h2>
-            <div class="screenshots-slider">
-                <div class="screenshot-item">
-                    <img src="assets/screenshot-1.png" alt="日历视图" width="1290" height="2796" loading="lazy" decoding="async">
-                    <p>直观的日历视图</p>
+            <h2 class="section-title" data-i18n="screenshotsTitle">应用截图</h2>
+            <p class="section-sub" data-i18n="screenshotsSub">左右滑动，点击可放大查看。</p>
+            <div class="gallery">
+                <button class="gal-arrow prev" type="button" aria-label="上一张" id="galPrev">‹</button>
+                <div class="gal-track" id="galTrack">
+                    <figure class="shot reveal">
+                        <div class="phone"><img src="assets/screenshot-1.png" alt="直观的日历视图" width="640" height="1387" loading="lazy" decoding="async"></div>
+                        <figcaption data-i18n="shot1">AI 自动填满你的空档</figcaption>
+                    </figure>
+                    <figure class="shot reveal">
+                        <div class="phone"><img src="assets/screenshot-2.png" alt="智能任务管理" width="640" height="1387" loading="lazy" decoding="async"></div>
+                        <figcaption data-i18n="shot2">固定事件与灵活任务</figcaption>
+                    </figure>
+                    <figure class="shot reveal">
+                        <div class="phone"><img src="assets/screenshot-3.png" alt="专注计时器" width="640" height="1387" loading="lazy" decoding="async"></div>
+                        <figcaption data-i18n="shot3">专注计时，追踪时长</figcaption>
+                    </figure>
+                    <figure class="shot reveal">
+                        <div class="phone"><img src="assets/screenshot-4.png" alt="数据统计" width="640" height="1387" loading="lazy" decoding="async"></div>
+                        <figcaption data-i18n="shot4">时间去向一目了然</figcaption>
+                    </figure>
                 </div>
-                <div class="screenshot-item">
-                    <img src="assets/screenshot-2.png" alt="任务管理" width="1290" height="2796" loading="lazy" decoding="async">
-                    <p>智能任务管理</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="assets/screenshot-3.png" alt="专注计时" width="1290" height="2796" loading="lazy" decoding="async">
-                    <p>专注计时器</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="assets/screenshot-4.png" alt="数据统计" width="1290" height="2796" loading="lazy" decoding="async">
-                    <p>详细统计分析</p>
-                </div>
+                <button class="gal-arrow next" type="button" aria-label="下一张" id="galNext">›</button>
+            </div>
+            <div class="gal-dots" id="galDots" aria-hidden="true"></div>
+        </div>
+    </section>
+
+    <section class="privacy">
+        <div class="container privacy-card">
+            <div class="privacy-lead">
+                <h2 data-i18n="privacyTitle">您的日程，只属于您</h2>
+                <p data-i18n="privacyDesc">没有账号，没有云端，没有追踪。AI 排程在设备本地完成，卸载即彻底清除。</p>
+            </div>
+            <ul class="privacy-points">
+                <li><span aria-hidden="true">📱</span><span data-i18n="pp1">数据本地存储</span></li>
+                <li><span aria-hidden="true">📶</span><span data-i18n="pp2">离线即可使用</span></li>
+                <li><span aria-hidden="true">🚫</span><span data-i18n="pp3">无任何追踪</span></li>
+                <li><span aria-hidden="true">🎯</span><span data-i18n="pp4">无广告干扰</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title" data-i18n="faqTitle">常见问题</h2>
+            <div class="faq-list">
+                <details class="faq-item reveal"><summary data-i18n="q1">AI 排程需要联网吗？</summary><p data-i18n="a1">不需要。AI 排程逻辑在设备本地运行，全程离线可用，您的日程数据不会离开手机。</p></details>
+                <details class="faq-item reveal"><summary data-i18n="q2">数据会同步到云端吗？</summary><p data-i18n="a2">所有数据都保存在您的设备本地，我们不上传、不收集、不追踪任何日程信息。</p></details>
+                <details class="faq-item reveal"><summary data-i18n="q3">固定事件和灵活任务有什么区别？</summary><p data-i18n="a3">固定事件有明确时间（如会议）；灵活任务只需时长和截止日期，AI 会把它们自动排入空档。</p></details>
+                <details class="faq-item reveal"><summary data-i18n="q4">任务分片是怎么工作的？</summary><p data-i18n="a4">较长的任务可被拆成多个片段，AI 见缝插针地分配到多个空闲时段，让长任务也能持续推进。</p></details>
+                <details class="faq-item reveal"><summary data-i18n="q5">支持哪些语言和系统版本？</summary><p data-i18n="a5">支持简体中文与英文双语，需要 iOS 17.0 或更高版本。</p></details>
             </div>
         </div>
     </section>
 
-    
     <section id="download" class="download">
         <div class="container">
             <div class="download-content">
-                <h2>立即下载AI日历</h2>
-                <p>开始您的高效时间管理之旅</p>
+                <h2 data-i18n="downloadTitle">立即下载 AI日历</h2>
+                <p data-i18n="downloadSubtitle">开始您的高效时间管理之旅。</p>
                 <div class="download-buttons">
                     <a href="https://apps.apple.com/app/id6748324487" class="app-store-badge" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/app-store-badge-cn.svg" alt="Download on App Store" width="120" height="40" loading="lazy">
+                        <img src="assets/app-store-badge-cn.svg" alt="App Store 下载" width="180" height="60" loading="lazy">
                     </a>
                 </div>
-                <p class="download-note">需要 iOS 17.0 或更高版本</p>
+                <p class="download-note" data-i18n="downloadNote">需要 iOS 17.0 或更高版本</p>
             </div>
         </div>
     </section>
+    </main>
 
-    
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; <span id="currentYear">2026</span> AI日历. All rights reserved.</p>
-                <p>Built by WeiProduct</p>
-                <p>Contact: <a href="mailto:1597498880weiproduct@gmail.com" style="color: white; text-decoration: underline;">1597498880weiproduct@gmail.com</a></p>
+                <p>&copy; <span id="currentYear">2026</span> <span data-i18n="footerRights">AI日历. All rights reserved.</span></p>
+                <p data-i18n="footerMadeBy">Built by WeiProduct</p>
+                <p>Contact: <a href="mailto:1597498880weiproduct@gmail.com">1597498880weiproduct@gmail.com</a></p>
             </div>
         </div>
     </footer>
+
+    <div class="sticky-cta" id="stickyCta">
+        <div class="sticky-app">
+            <span class="brand-icon sm" aria-hidden="true"><svg viewBox="0 0 100 100" width="30" height="30"><rect width="100" height="100" rx="24" fill="url(#bg)"/><rect x="24" y="28" width="52" height="48" rx="9" fill="none" stroke="#fff" stroke-width="5"/><path d="M24 42 H76 M38 22 V32 M62 22 V32" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg></span>
+            <div class="sticky-txt"><strong>AI日历</strong><span data-i18n="stickySub">AI 智能排程 · 免费</span></div>
+        </div>
+        <a href="https://apps.apple.com/app/id6748324487" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer" data-i18n="stickyGet">获取</a>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
