@@ -451,7 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '- App Store link: https://apps.apple.com/app/id6748324487',
     '',
     'Style rules:',
-    '- Reply in the language the user writes in (Chinese → Chinese, English → English).',
+    '- ALWAYS reply in the same language as the user\'s most recent message: English question → English answer, 中文提问 → 中文回答. Do NOT default to Chinese just because the app has a Chinese name.',
     '- Keep replies to 1-3 short sentences; be friendly and concrete.',
     '- NEVER invent download counts, ratings, reviews, or features not listed above.',
     '- If asked about unrelated topics, politely steer the conversation back to AI Calendar.',
