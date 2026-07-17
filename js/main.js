@@ -70,7 +70,18 @@ const I18N = {
     cmpR4s: '时间都去哪了', cmpR4m: '凭感觉回忆', cmpR4a: '专注计时 + 每周时间报告',
     cmpR5s: '你的日程数据', cmpR5m: '云端日历上传到服务器', cmpR5a: '100% 本地存储，零追踪',
     footerTag: '本地 AI 排程，把每一天安排得清清楚楚。',
-    footerProduct: '产品', footerSupport: '支持', footerDownload: '下载 App', footerContact: '联系我们'
+    footerProduct: '产品', footerSupport: '支持', footerDownload: '下载 App', footerContact: '联系我们',
+    /* AI-AVATAR */
+    aiTitle: 'AI分身 · AI日历助手',
+    aiGreeting: '你好！我是 AI日历 的 AI分身 🗓️ 关于 AI 排程、隐私保护、设备支持或价格，都可以问我。',
+    aiPlaceholder: '输入你的问题…',
+    aiSend: '发送',
+    aiChip1: 'AI 怎么帮我排日程？',
+    aiChip2: '我的数据安全吗？',
+    aiChip3: '支持哪些设备？',
+    aiDisclaimer: 'AI 生成，仅供参考',
+    aiError: '抱歉，AI 助手暂时连不上，请稍后再试。(Sorry, the assistant is temporarily unreachable — please try again later.)'
+    /* /AI-AVATAR */
   },
   'en': {
     skip: 'Skip to content',
@@ -142,7 +153,18 @@ const I18N = {
     cmpR4s: 'Where did time go?', cmpR4m: 'Guesswork', cmpR4a: 'Focus timer + weekly time report',
     cmpR5s: 'Your schedule data', cmpR5m: 'Cloud calendars upload it to servers', cmpR5a: '100% on-device, zero tracking',
     footerTag: 'On-device AI scheduling that plans your day, clearly.',
-    footerProduct: 'Product', footerSupport: 'Support', footerDownload: 'Download', footerContact: 'Contact us'
+    footerProduct: 'Product', footerSupport: 'Support', footerDownload: 'Download', footerContact: 'Contact us',
+    /* AI-AVATAR */
+    aiTitle: 'AI Avatar · AI Calendar Assistant',
+    aiGreeting: 'Hi! I\'m the AI avatar for AI Calendar 🗓️ Ask me about AI scheduling, privacy, supported devices, or pricing.',
+    aiPlaceholder: 'Type your question…',
+    aiSend: 'Send',
+    aiChip1: 'How does AI schedule my day?',
+    aiChip2: 'Is my data private?',
+    aiChip3: 'Which devices are supported?',
+    aiDisclaimer: 'AI-generated · for reference only',
+    aiError: 'Sorry, the assistant is temporarily unreachable — please try again later. （抱歉，AI 助手暂时连不上，请稍后再试。）'
+    /* /AI-AVATAR */
   }
 };
 
@@ -155,6 +177,12 @@ function applyLang(lang) {
     const k = el.getAttribute('data-i18n');
     if (t[k] !== undefined) el.textContent = t[k];
   });
+  /* AI-AVATAR: translate placeholder attributes */
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const k = el.getAttribute('data-i18n-ph');
+    if (t[k] !== undefined) el.setAttribute('placeholder', t[k]);
+  });
+  /* /AI-AVATAR */
   document.documentElement.lang = currentLang;
   const label = currentLang === 'zh-CN' ? 'EN' : '中文';
   const ls = document.getElementById('langSwitch');
@@ -406,3 +434,147 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+/* AI-AVATAR: floating "AI分身" assistant widget */
+(function () {
+  const AI_PROXY_URL = 'https://personal-portfolio-api-sandy.vercel.app/api/chat-proxy';
+  const AI_SYSTEM_PROMPT = [
+    'You are the "AI分身" (AI avatar) assistant on the promo website of AI Calendar (AI日历), an iOS time-management app by WeiProduct.',
+    '',
+    'App facts (the ONLY facts you may state):',
+    '- One-liner: let AI plan your day — add tasks with just a duration and deadline, and AI auto-slots them into open gaps around your fixed events.',
+    '- Key features: AI smart scheduling by priority and deadline with automatic conflict avoidance; fixed events vs. flexible tasks; task slicing (long tasks split across several free slots); built-in Pomodoro focus timer linked to tasks; weekly time reports / review; calendar views; scroll-free natural task entry.',
+    '- Privacy: 100% on-device storage — no account, no cloud, no tracking, no ads; AI scheduling runs locally and works fully offline.',
+    '- Platform: iPhone, requires iOS 17.0 or later.',
+    '- Price: free.',
+    '- Languages: English and Simplified Chinese (中文).',
+    '- App Store link: https://apps.apple.com/app/id6748324487',
+    '',
+    'Style rules:',
+    '- Reply in the language the user writes in (Chinese → Chinese, English → English).',
+    '- Keep replies to 1-3 short sentences; be friendly and concrete.',
+    '- NEVER invent download counts, ratings, reviews, or features not listed above.',
+    '- If asked about unrelated topics, politely steer the conversation back to AI Calendar.',
+    '- When the user wants to download or try the app, point them to the App Store link.'
+  ].join('\n');
+  const AI_MAX_HISTORY = 12;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('aiToggle');
+    const panel = document.getElementById('aiPanel');
+    const closeBtn = document.getElementById('aiClose');
+    const msgs = document.getElementById('aiMsgs');
+    const chipsWrap = document.getElementById('aiChips');
+    const form = document.getElementById('aiForm');
+    const input = document.getElementById('aiInput');
+    const sendBtn = document.getElementById('aiSendBtn');
+    if (!toggle || !panel || !msgs || !form || !input) return;
+
+    let history = [];
+    let greeted = false;
+    let busy = false;
+
+    function addBubble(role, text, i18nKey) {
+      const div = document.createElement('div');
+      div.className = 'ai-msg ' + (role === 'user' ? 'user' : 'bot');
+      if (i18nKey) {
+        div.setAttribute('data-i18n', i18nKey); // follows future language switches too
+        div.textContent = I18N[currentLang][i18nKey];
+      } else {
+        div.textContent = text;
+      }
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+      return div;
+    }
+
+    function showTyping() {
+      const div = document.createElement('div');
+      div.className = 'ai-msg bot ai-typing';
+      div.innerHTML = '<span></span><span></span><span></span>';
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+      return div;
+    }
+
+    function openPanel() {
+      panel.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+      if (!greeted) { greeted = true; addBubble('bot', '', 'aiGreeting'); }
+      input.focus();
+    }
+    function closePanel() {
+      panel.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.focus();
+    }
+
+    async function send(text) {
+      text = (text || '').trim();
+      if (!text || busy) return;
+      busy = true;
+      if (sendBtn) sendBtn.disabled = true;
+      if (chipsWrap) chipsWrap.hidden = true;
+      addBubble('user', text);
+      history.push({ role: 'user', content: text });
+      history = history.slice(-AI_MAX_HISTORY);
+      const typing = showTyping();
+      try {
+        const res = await fetch(AI_PROXY_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'gpt-4o-mini',
+            messages: [{ role: 'system', content: AI_SYSTEM_PROMPT }].concat(history),
+            max_tokens: 350
+          })
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        let reply = '';
+        if (data && data.choices && data.choices[0]) {
+          const m = data.choices[0].message;
+          reply = (m && m.content) || data.choices[0].text || '';
+        }
+        if (!reply && data && typeof data.content === 'string') reply = data.content;
+        if (!reply && data && typeof data.reply === 'string') reply = data.reply;
+        if (!reply && data && typeof data.message === 'string') reply = data.message;
+        reply = (reply || '').trim();
+        if (!reply) throw new Error('empty reply');
+        typing.remove();
+        addBubble('bot', reply);
+        history.push({ role: 'assistant', content: reply });
+        history = history.slice(-AI_MAX_HISTORY);
+      } catch (err) {
+        typing.remove();
+        addBubble('bot', '', 'aiError');
+      } finally {
+        busy = false;
+        if (sendBtn) sendBtn.disabled = false;
+      }
+    }
+
+    toggle.addEventListener('click', () => (panel.hidden ? openPanel() : closePanel()));
+    if (closeBtn) closeBtn.addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) closePanel(); });
+    if (chipsWrap) chipsWrap.querySelectorAll('.ai-chip').forEach(chip => {
+      chip.addEventListener('click', () => send(chip.textContent));
+    });
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const v = input.value;
+      input.value = '';
+      send(v);
+    });
+
+    // Dev/verify affordance: ?aichat=open auto-opens; ?aichat=demo also sends chip 1 for real.
+    const q = location.search;
+    if (q.indexOf('aichat=open') !== -1 || q.indexOf('aichat=demo') !== -1) {
+      openPanel();
+      if (q.indexOf('aichat=demo') !== -1) {
+        setTimeout(() => send(I18N[currentLang].aiChip1), 600);
+      }
+    }
+  });
+})();
+/* /AI-AVATAR */
